@@ -86,7 +86,7 @@ public class InMemoryStorage {
 
     public List<Item> getAllItems(Long ownerId) {
         List<Item> ar = new ArrayList<>(items.values());
-        return ar.stream().filter(item -> item.getOwner().getId() == ownerId).toList();
+        return ar.stream().filter(item -> item.getOwner().getId().equals(ownerId)).toList();
     }
 
     public Item getItem(Long itemId) {

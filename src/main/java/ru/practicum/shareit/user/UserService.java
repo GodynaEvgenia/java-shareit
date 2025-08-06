@@ -32,7 +32,7 @@ public class UserService {
         return inMemoryStorage.updateUser(usereId, user);
     }
 
-    public void deleteUser(Long userId){
+    public void deleteUser(Long userId) {
         inMemoryStorage.deleteUser(userId);
     }
 }

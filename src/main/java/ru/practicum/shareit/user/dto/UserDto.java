@@ -1,18 +1,15 @@
-package ru.practicum.shareit.user;
+package ru.practicum.shareit.user.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
-
+import lombok.*;
 
 @Getter
 @Setter
 @ToString
 @RequiredArgsConstructor
-public class User {
+@AllArgsConstructor
+public class UserDto {
     private Long id;
     private String name;
     @NotBlank

@@ -1,9 +1,12 @@
-package ru.practicum.shareit;
+package ru.practicum.shareit.repository;
 
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import ru.practicum.shareit.exceptions.NotFoundException;
 import ru.practicum.shareit.item.model.Item;
-import ru.practicum.shareit.user.User;
+import ru.practicum.shareit.user.model.User;
 
 import java.util.*;
 
@@ -14,13 +17,14 @@ public class InMemoryStorage {
     private HashMap<Long, User> users;
     private HashMap<Long, Item> items;
     private Set<String> emails;
-
+    private final Validator validator;
 
     public InMemoryStorage() {
         id = 1L;
         users = new HashMap<>();
         items = new HashMap<>();
         emails = new HashSet<>();
+        validator = Validation.buildDefaultValidatorFactory().getValidator();
     }
 
     public Long getId() {

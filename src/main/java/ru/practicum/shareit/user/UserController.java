@@ -4,6 +4,8 @@ import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import ru.practicum.shareit.user.dto.UserDto;
+import ru.practicum.shareit.user.model.User;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,17 +32,17 @@ public class UserController {
     }
 
     @PostMapping
-    public User create(@RequestBody @Valid User user) {
+    public UserDto create(@RequestBody @Valid UserDto user) {
         log.info("создание пользователя, user = {}", user.toString());
-        User createdUser = userService.create(user);
+        UserDto createdUser = userService.create(user);
         log.info("пользователь создан, user={}", createdUser.toString());
         return createdUser;
     }
 
     @PatchMapping("/{userId}")
-    public User update(@PathVariable Long userId,
-                       @RequestBody User user) {
-        return userService.update(userId, user);
+    public UserDto update(@PathVariable Long userId,
+                          @RequestBody UserDto userDto) {
+        return userService.update(userId, userDto);
     }
 
     @DeleteMapping("/{userId}")

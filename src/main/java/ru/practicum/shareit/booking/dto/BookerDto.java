@@ -8,5 +8,5 @@ import lombok.*;
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class BookerDto {
-    Long id ;
+    Long id;
 }

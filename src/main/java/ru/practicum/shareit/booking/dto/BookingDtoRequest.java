@@ -10,11 +10,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class BookingDtoRequest {
-    private Long id;
-    private LocalDateTime start;
+    private Long id ;
+    private LocalDateTime start ;
 
-    private LocalDateTime end;
-    private Long itemId;
-    private Long bookerId;
-    private String status;
+    private LocalDateTime end ;
+    private Long itemId ;
+    private Long bookerId ;
+    private String status ;
 }

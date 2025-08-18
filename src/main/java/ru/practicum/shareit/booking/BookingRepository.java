@@ -17,14 +17,14 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
     List<Booking> findAllByBooker_idAndStartDateAfterOrderByStartDate(Long bookerId, LocalDateTime date);
 
     @Query("select b " +
-            "from Booking as b "+
+            "from Booking as b " +
             "join b.item as i " +
             "join i.owner as o " +
             "where o.id = ?1 ")
     List<Booking> getByOwner(Long ownerId);
 
     @Query("select b " +
-            "from Booking as b "+
+            "from Booking as b " +
             "join b.item as i " +
             "join i.owner as o " +
             "where o.id = ?1 " +
@@ -32,7 +32,7 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
     List<Booking> getByOwnerAndStartDateBefore(Long ownerId, LocalDateTime date);
 
     @Query("select b " +
-            "from Booking as b "+
+            "from Booking as b " +
             "join b.item as i " +
             "join i.owner as o " +
             "where o.id = ?1 " +
@@ -40,7 +40,7 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
     List<Booking> getByOwnerAndStartDateAfter(Long ownerId, LocalDateTime date);
 
     @Query("select b " +
-            "from Booking as b "+
+            "from Booking as b " +
             "join b.item as i " +
             "join i.owner as o " +
             "where o.id = ?1 " +
@@ -48,7 +48,7 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
     List<Booking> getByOwner_Status(Long ownerId, BookingState status);
 
     @Query("select b " +
-            "from Booking as b "+
+            "from Booking as b " +
             "join b.item as i " +
             "join b.booker as bk " +
             "where i.id = ?2 " +

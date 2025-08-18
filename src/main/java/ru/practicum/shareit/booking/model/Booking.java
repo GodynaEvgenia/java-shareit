@@ -1,15 +1,12 @@
 package ru.practicum.shareit.booking.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import ru.practicum.shareit.booking.BookingState;
 import ru.practicum.shareit.item.model.Item;
 import ru.practicum.shareit.user.model.User;
 
-import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @ToString
@@ -22,19 +19,19 @@ import java.time.LocalDateTime;
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id ;
     @NotNull
     //@Future
     private LocalDateTime startDate ;
-   // @Future
+    // @Future
     @NotNull
     private LocalDateTime endDate ;
     @ManyToOne
     @JoinColumn(name = "item_id")
-    private Item item;
+    private Item item ;
     @ManyToOne
     @JoinColumn(name = "booker_id")
-    private User booker;
+    private User booker ;
     @Enumerated(EnumType.STRING)
-    private BookingState status;
+    private BookingState status ;
 }

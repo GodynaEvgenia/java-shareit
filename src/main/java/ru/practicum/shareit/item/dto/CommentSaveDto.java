@@ -8,5 +8,5 @@ import lombok.ToString;
 @Getter
 @Setter
 public class CommentSaveDto {
-    String text ;
+    String text;
 }

@@ -10,9 +10,9 @@ import lombok.*;
 @RequiredArgsConstructor
 @AllArgsConstructor
 public class UserDto {
-    private Long id ;
-    private String name ;
+    private Long id;
+    private String name;
     @NotBlank
     @Email(message = "Некорректный email")
-    private String email ;
+    private String email;
 }

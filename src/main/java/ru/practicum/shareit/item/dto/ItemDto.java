@@ -11,12 +11,12 @@ import lombok.*;
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class ItemDto {
-    private Long id ;
+    private Long id;
     @NotBlank
     @NotEmpty
-    private String name ;
+    private String name;
     @NotEmpty
-    private String description ;
+    private String description;
     @NotNull
-    private Boolean available ;
+    private Boolean available;
 }

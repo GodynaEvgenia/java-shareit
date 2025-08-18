@@ -1,8 +1,8 @@
 package ru.practicum.shareit.user;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.practicum.shareit.repository.InMemoryStorage;
 import ru.practicum.shareit.user.dto.UserDto;
 import ru.practicum.shareit.user.model.User;
 
@@ -10,36 +10,42 @@ import java.util.List;
 
 @Service
 public class UserService {
-    private InMemoryStorage inMemoryStorage;
+    private UserRepository repository;
     final UserMapper userMapper;
 
     @Autowired
-    public UserService(InMemoryStorage inMemoryStorage, UserMapper userMapper) {
-        this.inMemoryStorage = inMemoryStorage;
+    public UserService(UserRepository repository, UserMapper userMapper) {
+        this.repository = repository;
         this.userMapper = userMapper;
     }
 
     public User findById(long userId) {
-        return inMemoryStorage.findUserById(userId);
+        return repository.findById(userId).get();
     }
 
     public List<User> getAll() {
-        return null;
+        return repository.findAll();
     }
 
+    @Transactional
     public UserDto create(UserDto userDto) {
         User user = userMapper.toModel(userDto);
-        User savedUser = inMemoryStorage.createUser(user);
+        User savedUser = repository.save(user);
         return userMapper.toDto(savedUser);
     }
 
-    public UserDto update(Long usereId, UserDto userDto) {
-        User user = userMapper.toModel(userDto);
-        User savedUser = inMemoryStorage.updateUser(usereId, user);
+    @Transactional
+    public UserDto update(Long userId, UserDto userDto) {
+        User exUser = repository.findById(userId).get();
+        User user = userMapper.toModelForUpdate(userDto, exUser);
+        user.setId(userId);
+        User savedUser = repository.save(user);
         return userMapper.toDto(savedUser);
     }
 
+    @Transactional
     public void deleteUser(Long userId) {
-        inMemoryStorage.deleteUser(userId);
+        User user = repository.findById(userId).get();
+        repository.delete(user);
     }
 }

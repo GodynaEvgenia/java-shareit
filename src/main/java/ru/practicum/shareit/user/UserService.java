@@ -26,12 +26,14 @@ public class UserService {
     public List<User> getAll() {
         return repository.findAll();
     }
+
     @Transactional
     public UserDto create(UserDto userDto) {
         User user = userMapper.toModel(userDto);
         User savedUser = repository.save(user);
         return userMapper.toDto(savedUser);
     }
+
     @Transactional
     public UserDto update(Long userId, UserDto userDto) {
         User exUser = repository.findById(userId).get();
@@ -40,6 +42,7 @@ public class UserService {
         User savedUser = repository.save(user);
         return userMapper.toDto(savedUser);
     }
+
     @Transactional
     public void deleteUser(Long userId) {
         User user = repository.findById(userId).get();

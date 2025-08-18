@@ -96,6 +96,7 @@ public class ItemServiceImpl implements ItemService {
             return itemsDto;
         }
     }
+
     @Transactional
     public CommentDto addComment(Long userId, Long itemId, String comment, LocalDateTime requestTime) {
         User user = userRepository.findById(userId).get();

@@ -11,11 +11,11 @@ import java.util.List;
 @AllArgsConstructor
 @RequiredArgsConstructor
 public class ItemDtoResp {
-    Long id;
-    String name;
-    String description;
-    Boolean available;
-    LocalDateTime nextBooking;
-    LocalDateTime lastBooking;
-    List<CommentDto> comments;
+    Long id ;
+    String name ;
+    String description ;
+    Boolean available ;
+    LocalDateTime nextBooking ;
+    LocalDateTime lastBooking ;
+    List<CommentDto> comments ;
 }

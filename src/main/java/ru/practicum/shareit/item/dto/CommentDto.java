@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 public class CommentDto {
     Long id ;
-    String text;
-    String authorName;
-    LocalDateTime created;
+    String text ;
+    String authorName ;
+    LocalDateTime created ;
 }

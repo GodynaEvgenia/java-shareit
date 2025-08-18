@@ -1,5 +1,6 @@
 package ru.practicum.shareit.item;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    @Transactional
     public ItemDto createItem(ItemDto itemDto, Long ownerId) {
         Optional<User> owner = userRepository.findById(ownerId);
         if (!owner.isPresent()) {
@@ -59,6 +61,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    @Transactional
     public ItemDto updateItem(ItemDto itemDto, Long itemId, Long ownerId) {
         Optional<User> owner = userRepository.findById(ownerId);
         if (!owner.isPresent()) {
@@ -93,7 +96,7 @@ public class ItemServiceImpl implements ItemService {
             return itemsDto;
         }
     }
-
+    @Transactional
     public CommentDto addComment(Long userId, Long itemId, String comment, LocalDateTime requestTime) {
         User user = userRepository.findById(userId).get();
         Item item = repository.findById(itemId).get();

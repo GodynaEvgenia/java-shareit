@@ -1,5 +1,6 @@
 package ru.practicum.shareit.booking;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class BookingService {
         this.itemRepository = itemRepository;
         this.bookingMapper = bookingMapper;
     }
-
+    @Transactional
     public BookingDtoResponse createBooking(BookingDtoRequest bookingDto, Long userId) {
         Optional<User> booker = userRepository.findById(userId);
         if (!booker.isPresent()) {
@@ -57,7 +58,7 @@ public class BookingService {
         Booking savedBooking = bookingRepository.save(booking);
         return bookingMapper.toDto(savedBooking, userId);
     }
-
+    @Transactional
     public BookingDtoResponse approveRequest(Long userId, Long bookingId, Boolean approved) {
         Booking booking = bookingRepository.findById(bookingId).get();
         if (!booking.getItem().getOwner().getId().equals(userId)) {

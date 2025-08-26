@@ -2,9 +2,15 @@ package ru.practicum.shareit.item;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
+import ru.practicum.shareit.item.dto.CommentDto;
 import ru.practicum.shareit.item.dto.ItemDto;
+import ru.practicum.shareit.item.dto.ItemDtoResp;
+import ru.practicum.shareit.item.model.Comment;
 import ru.practicum.shareit.item.model.Item;
 import ru.practicum.shareit.user.model.User;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Slf4j
 @Component
@@ -29,7 +35,24 @@ public class ItemMapper {
         return item;
     }
 
-    public ItemDto toDto(Item item) {
+    public ItemDto toDto(Item item, Long ownerId, List<Comment> comments) {
         return new ItemDto(item.getId(), item.getName(), item.getDescription(), item.getAvailable());
+    }
+
+    public ItemDtoResp toDtoResp(Item item, Long ownerId, List<CommentDto> comments) {
+        ItemDtoResp itemDtoResp = new ItemDtoResp();
+        itemDtoResp.setId(item.getId());
+        itemDtoResp.setName(item.getName());
+        itemDtoResp.setDescription(item.getDescription());
+        itemDtoResp.setAvailable(item.getAvailable());
+        itemDtoResp.setComments(comments);
+        if (item.getOwner().getId().equals(ownerId)) {
+            itemDtoResp.setNextBooking(LocalDateTime.now());
+            itemDtoResp.setLastBooking(LocalDateTime.now());
+        } else {
+            itemDtoResp.setNextBooking(null);
+            itemDtoResp.setLastBooking(null);
+        }
+        return itemDtoResp;
     }
 }

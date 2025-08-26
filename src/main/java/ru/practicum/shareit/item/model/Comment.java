@@ -10,15 +10,17 @@ import ru.practicum.shareit.user.model.User;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "items", schema = "public")
-public class Item {
+@Table(name = "comments", schema = "public")
+public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String description;
-    private Boolean available;
+    private String text;
     @ManyToOne
-    @JoinColumn(name = "owner_id")
-    private User owner;
+    @JoinColumn(name = "item_id")
+    private Item item;
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private User author;
+
 }

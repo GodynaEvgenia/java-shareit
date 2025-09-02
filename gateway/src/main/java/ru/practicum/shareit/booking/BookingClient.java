@@ -40,7 +40,6 @@ public class BookingClient extends BaseClient {
 
 
     public ResponseEntity<Object> bookItem(long userId, BookItemRequestDto requestDto) {
-        log.info("gateway client " + userId + " " + requestDto.toString());
         return post("", userId, requestDto);
     }
 

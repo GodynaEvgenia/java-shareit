@@ -65,7 +65,6 @@ public class BookingController {
     @GetMapping("/owner")
     public ResponseEntity<Object> getByOwner(@RequestHeader(name = "X-Sharer-User-Id") Long userId,
                                              @RequestParam(value = "state", defaultValue = "ALL") String state) {
-        log.info("получение списка вещей владельца, userId={}, state={}", userId, state);
         return bookingClient.getByOwner(userId, state);
 
     }

@@ -387,6 +387,7 @@ class BookingServiceTest {
         verify(bookingRepository).findAllByBooker_idOrderByStartDate(userId);
         verify(bookingMapper, times(2)).toDto(any(), eq(userId));
     }
+
     private final Long ownerId = 1L;
 
     @Test

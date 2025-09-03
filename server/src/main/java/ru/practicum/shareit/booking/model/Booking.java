@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @ToString
 @Getter
 @Setter
+@EqualsAndHashCode
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Entity

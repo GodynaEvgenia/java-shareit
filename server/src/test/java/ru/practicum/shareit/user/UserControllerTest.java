@@ -25,7 +25,6 @@ class UserControllerTest {
 
     @BeforeEach
     public void setUp() {
-        // Здесь можно добавить настройку тестовых данных, если необходимо
     }
 
     @Autowired
@@ -43,7 +42,7 @@ class UserControllerTest {
     @Test
     public void testFindById_UserExists() throws Exception {
         long userId = 1L;
-        UserDto userDto = new UserDto(); // создайте объект с нужными данными
+        UserDto userDto = new UserDto();
         userDto.setId(userId);
         userDto.setName("John Doe");
 
@@ -78,10 +77,6 @@ class UserControllerTest {
     }
 
     @Test
-    void findById() {
-    }
-
-    @Test
     void getAll() {
         List<User> expectedUser = List.of(new User());
         when(userService.getAll()).thenReturn(expectedUser);
@@ -96,12 +91,10 @@ class UserControllerTest {
 
     @Test
     void update() throws Exception {
-        // Исходные данные для запроса
         UserDto userDto = new UserDto();
         userDto.setName("John");
         userDto.setEmail("john@example.com");
 
-        // Ожидаемый результат после создания
         UserDto createdUser = new UserDto();
         createdUser.setId(1L);
         createdUser.setName("John");

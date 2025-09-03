@@ -24,7 +24,7 @@ class UserServiceTest {
     @Mock
     private UserRepository userRepository;
 
-    private UserMapper userMapper = new UserMapper(); // real object
+    private UserMapper userMapper = new UserMapper();
     private UserService userService;
 
     @BeforeEach

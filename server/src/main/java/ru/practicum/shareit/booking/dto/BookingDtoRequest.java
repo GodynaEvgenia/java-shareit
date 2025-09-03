@@ -3,7 +3,7 @@ package ru.practicum.shareit.booking.dto;
 import lombok.*;
 
 import java.time.LocalDateTime;
-
+@EqualsAndHashCode
 @ToString
 @Getter
 @Setter

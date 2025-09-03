@@ -70,7 +70,6 @@ public class ItemServiceImpl implements ItemService {
             request = requestRepository.findById(itemDto.getRequestId()).get();
             requestId = request.getId();
         } else {
-            //request = new Request();
             request = null;
         }
 

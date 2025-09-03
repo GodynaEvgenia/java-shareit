@@ -4,7 +4,7 @@ import lombok.*;
 import ru.practicum.shareit.item.dto.ItemDtoResp;
 
 import java.time.LocalDateTime;
-
+@EqualsAndHashCode
 @ToString
 @Getter
 @Setter

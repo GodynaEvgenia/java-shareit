@@ -1,0 +1,21 @@
+package ru.practicum.shareit.item;
+
+import lombok.*;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
+@ToString
+@Getter
+@Setter
+@AllArgsConstructor
+@RequiredArgsConstructor
+public class ItemDtoResp {
+    Long id;
+    String name;
+    String description;
+    Boolean available;
+    LocalDateTime nextBooking;
+    LocalDateTime lastBooking;
+    List<CommentDto> comments;
+}

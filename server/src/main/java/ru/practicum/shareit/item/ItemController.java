@@ -1,6 +1,5 @@
 package ru.practicum.shareit.item;
 
-import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -28,7 +27,7 @@ public class ItemController {
     @PostMapping
     public ItemDto create(
             @RequestHeader(name = "X-Sharer-User-Id") Long ownerId,
-            @RequestBody @Valid ItemDto item) {
+            @RequestBody ItemDto item) {
         log.info("server создание вещи, item = {}, owner={}", item.toString(), ownerId);
         ItemDto createdItem = itemService.createItem(item, ownerId);
         log.info("вещь создана, item={}", createdItem.toString());

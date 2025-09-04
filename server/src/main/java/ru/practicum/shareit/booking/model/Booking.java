@@ -1,7 +1,6 @@
 package ru.practicum.shareit.booking.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import ru.practicum.shareit.booking.BookingState;
 import ru.practicum.shareit.item.model.Item;
@@ -21,9 +20,9 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull
+    //@NotNull
     private LocalDateTime startDate;
-    @NotNull
+    //@NotNull
     private LocalDateTime endDate;
     @ManyToOne
     @JoinColumn(name = "item_id")

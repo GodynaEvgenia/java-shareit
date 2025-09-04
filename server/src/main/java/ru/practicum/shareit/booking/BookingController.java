@@ -1,6 +1,5 @@
 package ru.practicum.shareit.booking;
 
-import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +22,7 @@ public class BookingController {
     @PostMapping
     public BookingDtoResponse create(
             @RequestHeader(name = "X-Sharer-User-Id") Long userId,
-            @RequestBody @Valid BookingDtoRequest booking) {
+            @RequestBody BookingDtoRequest booking) {
         log.info("создание запроса на бронирование, booking = {}, user={}", booking.toString(), userId);
         BookingDtoResponse createdBooking = bookingService.createBooking(booking, userId);
         log.info("запрос создан, item={}", createdBooking.toString());

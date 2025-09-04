@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 
 @Slf4j
 @RestController
@@ -49,6 +50,9 @@ public class ItemController {
     @GetMapping("/search")
     public ResponseEntity<Object> search(@RequestHeader(name = "X-Sharer-User-Id") Long userId,
                                          @RequestParam String text) {
+        if (text == null || text.trim().isEmpty()) {
+            return ResponseEntity.ok(Collections.emptyList());
+        }
         return itemClient.search(text, userId);
     }
 

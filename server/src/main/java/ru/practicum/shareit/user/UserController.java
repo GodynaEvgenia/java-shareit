@@ -1,6 +1,5 @@
 package ru.practicum.shareit.user;
 
-import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +31,7 @@ public class UserController {
     }
 
     @PostMapping
-    public UserDto create(@RequestBody @Valid UserDto user) {
+    public UserDto create(@RequestBody UserDto user) {
         log.info("создание пользователя, user = {}", user.toString());
         UserDto createdUser = userService.create(user);
         log.info("пользователь создан, user={}", createdUser.toString());
